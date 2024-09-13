@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heartbeat Monitoring System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Heartbeat Monitoring System</h1>
+        <div id="status">Status: <span id="status-text">Checking...</span></div>
+    </div>
+
+    <script>
+        // Interval to send heartbeat (in milliseconds)
+        const HEARTBEAT_INTERVAL = 5000; // 5 seconds
+        const STATUS_ELEMENT = document.getElementById('status-text');
+
+        function sendHeartbeat() {
+            fetch('/heartbeat', { method: 'POST' })
+                .then(response => {
+                    if (response.ok) {
+                        STATUS_ELEMENT.textContent = 'Connected';
+                        STATUS_ELEMENT.style.color = 'green';
+                    } else {
+                        STATUS_ELEMENT.textContent = 'Failed to connect';
+                        STATUS_ELEMENT.style.color = 'red';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error sending heartbeat:', error);
+                    STATUS_ELEMENT.textContent = 'Error';
+                    STATUS_ELEMENT.style.color = 'red';
+                });
+        }
+
+        // Send heartbeat every 5 seconds
+        setInterval(sendHeartbeat, HEARTBEAT_INTERVAL);
+
+        // Send an initial heartbeat immediately
+        sendHeartbeat();
+    </script>
+</body>
+</html>

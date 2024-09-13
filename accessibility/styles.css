@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgba(255,255,255,0.8);
+    background-image: url('4540-Lu0JBRr.jpg'); /* Ensure the path is correct */
+    background-size: cover; /* Ensure the image covers the entire page */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Make the image fixed with respect to the viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity:0.5;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+#status {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#status-text {
+    margin-left: 10px;
+}
